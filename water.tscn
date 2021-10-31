@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://water.gd" type="Script" id=1]
+[ext_resource path="res://water_anim.tres" type="Texture" id=2]
+[ext_resource path="res://Point_1.gd" type="Script" id=3]
+[ext_resource path="res://wavy.shader" type="Shader" id=4]
+
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="CircleShape2D" id=41]
+radius = 2.0
+
+[sub_resource type="ShaderMaterial" id=42]
+shader = ExtResource( 4 )
+shader_param/SPD_OF_FOG = 1.0
+
+[node name="water" type="Node2D"]
+script = ExtResource( 1 )
+water_texture = ExtResource( 2 )
+whidth = 10
+offset_x = 5
+
+[node name="Static_1" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static_1"]
+shape = SubResource( 37 )
+
+[node name="ColorRect" type="ColorRect" parent="Static_1"]
+visible = false
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Joint_1" type="PinJoint2D" parent="."]
+position = Vector2( 2, 0 )
+scale = Vector2( 0.3, 0.3 )
+node_a = NodePath("../Static_1")
+node_b = NodePath("../Point_1")
+
+[node name="Point_1" type="RigidBody2D" parent="."]
+position = Vector2( 5, 0 )
+collision_layer = 64
+collision_mask = 0
+input_pickable = true
+gravity_scale = 0.0
+linear_damp = 2.8
+angular_velocity = 1.0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point_1"]
+modulate = Color( 0, 0.172549, 0.956863, 1 )
+shape = SubResource( 41 )
+
+[node name="BorderLine" type="Line2D" parent="."]
+material = SubResource( 42 )
+width = 45.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 2 )
+texture_mode = 1
+joint_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 9, 0 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[connection signal="input_event" from="Point_1" to="Point_1" method="_on_Point_1_input_event"]
