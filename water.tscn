@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://water.gd" type="Script" id=1]
 [ext_resource path="res://water_anim.tres" type="Texture" id=2]
 [ext_resource path="res://Point_1.gd" type="Script" id=3]
 [ext_resource path="res://wavy.shader" type="Shader" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 1, 1 )
@@ -20,6 +21,10 @@ script = ExtResource( 1 )
 water_texture = ExtResource( 2 )
 whidth = 10
 offset_x = 5
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 18, 2 )
+texture = ExtResource( 5 )
 
 [node name="Static_1" type="StaticBody2D" parent="."]
 collision_layer = 64
@@ -67,7 +72,7 @@ texture_mode = 1
 joint_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 9, 0 )
+position = Vector2( 21, 12 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
