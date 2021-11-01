@@ -1,6 +1,9 @@
 # water2d
-Simple pixel animated water that reacts to physics
-Just a simple pixel animated water; set the water texture 
-(should be an animated texture resource), "whidt" esencially 
-will create that number of points for draw the water and 
-"offset_x" its the distance between points.
+
+Simple pixel animated water that reacts to physics.
+
+## Usage
+
+* Set the water texture (it should be an animated texture resource).
+* Set the `width`. This will create the number of points to draw for the water.
+* Set the `offset_x`. It iss the distance between points.
