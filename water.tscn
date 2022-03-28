@@ -19,7 +19,7 @@ shader_param/SPD_OF_FOG = 1.0
 [node name="water" type="Node2D"]
 script = ExtResource( 1 )
 water_texture = ExtResource( 2 )
-whidth = 10
+whidth = 12
 offset_x = 5
 
 [node name="Icon" type="Sprite" parent="."]
